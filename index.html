@@ -8,41 +8,74 @@
 <style>
   :root{
     --azul:#0d2b52; --azul2:#123d75; --dorado:#f2b035; --rojo:#d64541;
-    --crema:#fff8ec; --gris:#5a6472; --borde:#e7ddc8;
+    --crema:#fff8ec; --tinta:#1d2735; --gris:#5a6472; --borde:#e7ddc8;
+    --papel:#fffdf7; --regla:#0d2b52;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--crema);color:#1d2735;line-height:1.55}
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#ece1c8;color:var(--tinta);line-height:1.55}
   .wrap{max-width:980px;margin:0 auto;padding:0 18px}
-  /* Encabezado */
-  header{background:linear-gradient(135deg,var(--azul),var(--azul2));color:#fff;padding:14px 0}
-  .brand{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-  .logo{font-size:34px}
-  .brand h1{font-family:Georgia,'Times New Roman',serif;font-size:30px;letter-spacing:.5px}
-  .brand h1 span{color:var(--dorado)}
-  .brand small{display:block;font-family:'Segoe UI',sans-serif;font-size:12.5px;color:#cfddF2;letter-spacing:1.6px;text-transform:uppercase}
-  /* Hero */
-  .hero{padding:44px 0 30px;text-align:center}
+  /* ============ HOJA DE PERIÓDICO ============ */
+  .paper{background:var(--papel);max-width:1040px;margin:16px auto 26px;border:1px solid #d9cba3;box-shadow:0 10px 34px rgba(13,43,82,.16);padding:0 0 6px}
+  /* Barra superior del diario */
+  .topbar{background:var(--azul);color:#cfddf2;font-size:12.5px;letter-spacing:.4px}
+  .topbar .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-top:7px;padding-bottom:7px}
+  .topbar strong{color:#fff}
+  .topbar .fecha{text-transform:capitalize;color:var(--dorado);font-weight:700}
+  /* Cabecera / nameplate */
+  .masthead{text-align:center;padding:26px 18px 0}
+  .masthead .filete-doble{border-top:4px solid var(--regla);border-bottom:1px solid var(--regla);height:5px;margin:0 6px}
+  .masthead h1{font-family:Georgia,'Times New Roman',serif;font-weight:900;font-size:clamp(44px,9vw,84px);letter-spacing:.5px;color:var(--azul);line-height:1.02;margin:14px 0 2px}
+  .masthead h1 .dmv{color:var(--dorado);-webkit-text-stroke:1.5px #b97e14;text-shadow:0 2px 0 rgba(185,126,20,.25)}
+  .masthead .lema{font-family:Georgia,serif;font-style:italic;font-size:clamp(15px,2.6vw,19px);color:var(--gris);margin-bottom:12px}
+  .masthead .dateline{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;border-top:2px solid var(--regla);border-bottom:4px double var(--regla);padding:7px 4px;font-size:12.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--azul);font-weight:700}
+  /* Titular principal */
+  .portada{padding:30px 0 8px;text-align:center}
   .badge{display:inline-block;background:var(--rojo);color:#fff;font-weight:700;font-size:13px;padding:6px 14px;border-radius:30px;letter-spacing:.6px;text-transform:uppercase}
-  .hero h2{font-family:Georgia,serif;font-size:38px;color:var(--azul);margin:18px auto 10px;max-width:760px;line-height:1.2}
-  .hero p{font-size:18px;color:var(--gris);max-width:680px;margin:0 auto 24px}
+  .portada h2{font-family:Georgia,serif;font-weight:900;font-size:clamp(30px,5.6vw,46px);color:var(--azul);margin:16px auto 10px;max-width:820px;line-height:1.15}
+  .portada .bajada{font-size:18px;color:var(--gris);max-width:700px;margin:0 auto 22px}
   .btn-wa{display:inline-block;background:#25d366;color:#06310f;font-weight:800;font-size:19px;padding:16px 34px;border-radius:50px;text-decoration:none;box-shadow:0 6px 18px rgba(37,211,102,.35)}
   .btn-wa:hover{background:#1fb457}
-  .hero .nota{margin-top:12px;font-size:14px;color:var(--gris)}
+  .nota{margin-top:12px;font-size:14px;color:var(--gris)}
+  figure.foto{margin:26px auto 0;max-width:900px}
+  figure.foto img{width:100%;display:block;border:1px solid #cbbd93}
+  figure.foto figcaption{font-size:13px;color:var(--gris);font-style:italic;padding:7px 4px 0;text-align:left;border-bottom:1px solid var(--borde)}
   /* Secciones */
   section{padding:34px 0}
   h3{font-family:Georgia,serif;font-size:28px;color:var(--azul);text-align:center;margin-bottom:8px}
   .sub{text-align:center;color:var(--gris);max-width:640px;margin:0 auto 26px}
+  /* Tarjetas = BOTONES reales a cada sección */
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
-  .card{background:#fff;border:1px solid var(--borde);border-radius:14px;padding:22px 18px;text-align:center;box-shadow:0 3px 10px rgba(13,43,82,.05)}
-  .card .ico{font-size:36px}
-  .card h4{color:var(--azul);font-size:18px;margin:10px 0 6px}
-  .card p{font-size:14.5px;color:var(--gris)}
+  a.card{display:block;background:#fff;border:1px solid var(--borde);border-top:5px solid var(--dorado);border-radius:14px;padding:22px 18px;text-align:center;box-shadow:0 3px 10px rgba(13,43,82,.06);text-decoration:none;color:var(--tinta);transition:transform .15s ease,box-shadow .15s ease}
+  a.card:hover,a.card:focus{transform:translateY(-3px);box-shadow:0 10px 22px rgba(13,43,82,.14);outline:2px solid var(--dorado)}
+  a.card .ico{font-size:36px}
+  a.card h4{color:var(--azul);font-size:18px;margin:10px 0 6px;font-family:Georgia,serif}
+  a.card p{font-size:14.5px;color:var(--gris)}
+  a.card .ver{display:inline-block;margin-top:12px;font-weight:800;color:var(--rojo);font-size:14px;letter-spacing:.3px}
+  /* ============ LA EDICIÓN (cuerpo del diario) ============ */
+  .edicion-banner{background:var(--rojo);color:#fff;text-align:center;font-weight:800;letter-spacing:.6px;padding:12px 16px;border-radius:10px;font-size:15.5px;text-transform:uppercase}
+  .edicion-aviso{text-align:center;color:var(--gris);font-size:14px;max-width:720px;margin:12px auto 0}
+  .columnas{display:grid;grid-template-columns:1fr 1fr;gap:0 34px;margin-top:10px}
+  @media(max-width:760px){.columnas{grid-template-columns:1fr}}
+  article.seccion{scroll-margin-top:20px;padding:22px 0 8px;break-inside:avoid}
+  article.seccion .sec-head{border-top:3px solid var(--regla);border-bottom:1px solid var(--regla);padding:8px 2px 7px;margin-bottom:14px}
+  article.seccion .kicker{font-size:11.5px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--rojo)}
+  article.seccion h4{font-family:Georgia,serif;font-size:24px;color:var(--azul);line-height:1.15}
+  article.seccion figure{margin:0 0 14px}
+  article.seccion figure img{width:100%;display:block;border:1px solid #cbbd93}
+  article.seccion figure figcaption{font-size:12.5px;color:var(--gris);font-style:italic;padding:6px 2px 0}
+  ul.notas{list-style:none}
+  ul.notas li{padding:11px 2px;border-bottom:1px dotted #c9b98d;font-size:15px}
+  ul.notas li:last-child{border-bottom:none}
+  ul.notas .tit{font-family:Georgia,serif;font-weight:700;color:var(--azul);font-size:16.5px}
+  .btn-cat{display:inline-block;margin-top:14px;background:#25d366;color:#06310f;font-weight:800;font-size:15.5px;padding:12px 24px;border-radius:50px;text-decoration:none;box-shadow:0 4px 12px rgba(37,211,102,.3)}
+  .btn-cat:hover{background:#1fb457}
   /* Negocios */
   .negocios{background:linear-gradient(135deg,var(--azul),var(--azul2));color:#fff;border-radius:18px;padding:36px 26px}
   .negocios h3{color:#fff}
   .negocios .sub{color:#cfddf2}
   .precios{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:8px}
-  .precio{background:#fff;color:#1d2735;border-radius:14px;padding:24px 20px;text-align:center}
+  .precio{background:#fff;color:var(--tinta);border-radius:14px;padding:24px 20px;text-align:center}
   .precio.destacado{border:3px solid var(--dorado)}
   .precio .tag{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--rojo)}
   .precio h4{font-size:19px;color:var(--azul);margin:8px 0 4px}
@@ -59,123 +92,234 @@
   /* Pie */
   footer{background:var(--azul);color:#cfddf2;padding:28px 0;text-align:center;font-size:14px;margin-top:20px}
   footer strong{color:#fff}
-  @media(max-width:560px){.hero h2{font-size:29px}.brand h1{font-size:24px}}
+  footer a{color:var(--dorado);font-weight:700;text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  .subir{display:inline-block;margin-top:12px;font-size:13px;letter-spacing:.4px}
+  @media(max-width:560px){.portada h2{font-size:29px}.paper{margin:0 auto 18px}}
 </style>
 </head>
-<body>
+<body id="portada">
 
-<header>
-  <div class="wrap brand">
-    <div class="logo">📰</div>
-    <div>
-      <h1>El Boletín <span>DMV</span></h1>
-      <small>Ofertas · Empleos · Eventos · Clasificados — en español</small>
-    </div>
+<div class="topbar">
+  <div class="wrap">
+    <span><strong>El Boletín DMV</strong> · El diario latino de tu comunidad</span>
+    <span class="fecha" id="fecha">Edición de ejemplo</span>
+    <span>Sale martes y viernes · 8:00 AM</span>
   </div>
-</header>
-
-<div class="wrap hero">
-  <span class="badge">🚀 En lanzamiento</span>
-  <h2>Todo lo que pasa en tu comunidad latina del DMV, directo a tu WhatsApp</h2>
-  <p>Dos veces por semana te llega un boletín corto y útil: las mejores <strong>ofertas locales</strong>, <strong>empleos</strong> que se están ofreciendo, <strong>eventos</strong> para la familia y <strong>anuncios clasificados</strong> de tu gente en Maryland, DC y Virginia. En español, sin spam y sin costo.</p>
-  <a class="btn-wa" href="https://wa.me/12406590154?text=Quiero%20recibir%20El%20Bolet%C3%ADn%20DMV" target="_blank" rel="noopener">📲 Quiero recibirlo GRATIS por WhatsApp</a>
-  <p class="nota">Gratis para siempre para los lectores. Te das de baja con un solo mensaje cuando quieras.</p>
 </div>
 
-<section class="wrap">
-  <h3>¿Qué trae cada edición?</h3>
-  <p class="sub">Sale <strong>2 veces por semana</strong>. Cada edición es breve: se lee en menos de 3 minutos.</p>
-  <div class="grid">
-    <div class="card">
-      <div class="ico">🏷️</div>
-      <h4>Ofertas locales</h4>
-      <p>Especiales y descuentos de negocios latinos de tu zona: comida, servicios, tiendas y más.</p>
-    </div>
-    <div class="card">
-      <div class="ico">💼</div>
-      <h4>Empleos</h4>
-      <p>Plazas que los negocios del área están buscando llenar, con el contacto directo para aplicar.</p>
-    </div>
-    <div class="card">
-      <div class="ico">🎉</div>
-      <h4>Eventos</h4>
-      <p>Fiestas, conciertos, actividades familiares y eventos comunitarios del fin de semana.</p>
-    </div>
-    <div class="card">
-      <div class="ico">📣</div>
-      <h4>Clasificados</h4>
-      <p>Compra, venta y servicios entre vecinos: cuartos, carros, muebles, clases y mucho más.</p>
-    </div>
-  </div>
-</section>
+<div class="paper">
 
-<section class="wrap">
-  <div class="negocios">
-    <h3>Para negocios: llega a tu comunidad</h3>
-    <p class="sub">El Boletín DMV se distribuye en los grupos latinos más activos del área y crece edición tras edición. Estamos en fase de lanzamiento: los primeros anunciantes entran con <strong>precio fundador</strong>.</p>
-    <div class="precios">
-      <div class="precio destacado">
-        <div class="tag">⭐ El más visible</div>
-        <h4>Patrocinador de edición</h4>
-        <div class="monto">$150–$300 <small>/ edición</small></div>
-        <p>Tu logo y un bloque destacado con tu oferta al frente de la edición que patrocinas.</p>
-      </div>
-      <div class="precio">
-        <div class="tag">📌 Accesible</div>
-        <h4>Anuncio clasificado</h4>
-        <div class="monto">$15 <small>/ edición</small></div>
-        <p>Tu anuncio de texto en la sección de clasificados: vendes, rentas, buscas empleados o ofreces un servicio.</p>
-      </div>
-      <div class="precio">
-        <div class="tag">🏆 Todo el mes</div>
-        <h4>Negocio destacado del mes</h4>
-        <div class="monto">$99 <small>/ mes</small></div>
-        <p>Tu negocio presentado como el destacado en todas las ediciones del mes.</p>
-      </div>
+  <!-- ===== CABECERA DE PERIÓDICO ===== -->
+  <div class="masthead">
+    <div class="filete-doble"></div>
+    <h1>El Boletín <span class="dmv">DMV</span></h1>
+    <p class="lema">«Ofertas, empleos, eventos y clasificados de tu gente — en español»</p>
+    <div class="dateline">
+      <span>Maryland · Washington DC · Virginia</span>
+      <span>Gratis para lectores</span>
+      <span>2 ediciones por semana</span>
     </div>
-    <div style="text-align:center">
-      <a class="btn-neg" href="https://wa.me/12406590154?text=Quiero%20informaci%C3%B3n%20para%20anunciar%20mi%20negocio%20en%20El%20Bolet%C3%ADn%20DMV" target="_blank" rel="noopener">Quiero anunciar mi negocio</a>
-    </div>
-    <p class="honesto">Sin contratos largos ni letra pequeña: pagas por edición o por mes, y renuevas solo si te funciona.</p>
   </div>
-</section>
 
-<section class="wrap">
-  <h3>Preguntas frecuentes</h3>
-  <div class="faq">
-    <details>
-      <summary>¿Cuánto cuesta recibir El Boletín DMV?</summary>
-      <p>Nada. Para los lectores es 100% gratis, siempre. Quienes pagan son los negocios que se anuncian.</p>
-    </details>
-    <details>
-      <summary>¿Cada cuánto sale?</summary>
-      <p>2 ediciones por semana. Es información local y útil, pensada para leerse en menos de 3 minutos.</p>
-    </details>
-    <details>
-      <summary>¿Cómo me suscribo?</summary>
-      <p>Toca el botón verde de arriba y envía el mensaje por WhatsApp. Quedas suscrito al instante, sin formularios ni contraseñas.</p>
-    </details>
-    <details>
-      <summary>¿Cómo me doy de baja?</summary>
-      <p>Con un solo mensaje por WhatsApp («baja») y no recibes más ediciones. Sin preguntas y sin complicaciones.</p>
-    </details>
-    <details>
-      <summary>¿De dónde sale la información?</summary>
-      <p>De negocios y vecinos de la comunidad latina del DMV (Maryland, DC y Virginia) que envían sus ofertas, empleos, eventos y clasificados. Estamos en lanzamiento y la audiencia crece con cada edición.</p>
-    </details>
-    <details>
-      <summary>Tengo un negocio, ¿cómo me anuncio?</summary>
-      <p>Escríbenos por WhatsApp con el botón «Quiero anunciar mi negocio». En lanzamiento aplicamos el precio fundador a los primeros patrocinadores y anunciantes.</p>
-    </details>
+  <!-- ===== TITULAR PRINCIPAL ===== -->
+  <div class="wrap portada">
+    <span class="badge">🚀 En lanzamiento</span>
+    <h2>Todo lo que pasa en tu comunidad latina del DMV, directo a tu WhatsApp</h2>
+    <p class="bajada">Dos veces por semana te llega un boletín corto y útil: las mejores <strong>ofertas locales</strong>, <strong>empleos</strong> que se están ofreciendo, <strong>eventos</strong> para la familia y <strong>anuncios clasificados</strong> de tu gente en Maryland, DC y Virginia. En español, sin spam y sin costo.</p>
+    <a class="btn-wa" href="https://wa.me/12406590154?text=Quiero%20recibir%20El%20Bolet%C3%ADn%20DMV">📲 Quiero recibirlo GRATIS por WhatsApp</a>
+    <p class="nota">Gratis para siempre para los lectores. Te das de baja con un solo mensaje cuando quieras.</p>
+    <figure class="foto">
+      <img src="foto-mercado.jpg" alt="Mercado latino lleno de color en Maryland, con familias de la comunidad comprando">
+      <figcaption>El comercio latino del DMV: cada edición recoge las ofertas, empleos y eventos que mueve la comunidad. (Foto de ambiente)</figcaption>
+    </figure>
   </div>
-</section>
+
+  <!-- ===== ÍNDICE: TARJETAS QUE SÍ FUNCIONAN ===== -->
+  <section class="wrap">
+    <h3>¿Qué trae cada edición?</h3>
+    <p class="sub">Sale <strong>2 veces por semana</strong> y se lee en menos de 3 minutos. <strong>Toca cada tarjeta</strong> y baja directo a su sección de la edición de ejemplo.</p>
+    <div class="grid">
+      <a class="card" href="#ofertas">
+        <div class="ico">🏷️</div>
+        <h4>Ofertas locales</h4>
+        <p>Especiales y descuentos de negocios latinos de tu zona: comida, servicios, tiendas y más.</p>
+        <span class="ver">Ver ofertas ↓</span>
+      </a>
+      <a class="card" href="#empleos">
+        <div class="ico">💼</div>
+        <h4>Empleos</h4>
+        <p>Plazas que los negocios del área están buscando llenar, con el contacto directo para aplicar.</p>
+        <span class="ver">Ver empleos ↓</span>
+      </a>
+      <a class="card" href="#eventos">
+        <div class="ico">🎉</div>
+        <h4>Eventos</h4>
+        <p>Fiestas, conciertos, actividades familiares y eventos comunitarios del fin de semana.</p>
+        <span class="ver">Ver eventos ↓</span>
+      </a>
+      <a class="card" href="#clasificados">
+        <div class="ico">📣</div>
+        <h4>Clasificados</h4>
+        <p>Compra, venta y servicios entre vecinos: cuartos, carros, muebles, clases y mucho más.</p>
+        <span class="ver">Ver clasificados ↓</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== LA EDICIÓN DE EJEMPLO ===== -->
+  <section class="wrap" id="edicion">
+    <div class="edicion-banner">📰 Edición de ejemplo — así se verá cada edición</div>
+    <p class="edicion-aviso">Esta es la <strong>Edición #1 (27 de octubre de 2026)</strong>, publicada aquí como muestra del formato. Los negocios de Omar son reales; los eventos y la vacante fueron verificados al publicarse la edición original. En las ediciones nuevas, cada sección trae el contenido fresco de la semana.</p>
+
+    <div class="columnas">
+
+      <article class="seccion" id="ofertas">
+        <div class="sec-head">
+          <div class="kicker">Sección · Ahorro</div>
+          <h4>🏷️ Ofertas locales</h4>
+        </div>
+        <figure>
+          <img src="foto-barrio.jpg" alt="Calle comercial de un barrio latino en Maryland, con tiendas y vecinos en la acera">
+          <figcaption>Los negocios latinos del área publican sus especiales en esta sección. (Foto de ambiente)</figcaption>
+        </figure>
+        <ul class="notas">
+          <li><span class="tit">Payaso Chikletin</span> — Shows de cumpleaños y baby showers en MD/DC/VA: paquetes de 1 hora <strong>$350</strong>, 1.5 horas <strong>$450</strong> y 2 horas <strong>$475</strong> (incluye figuras de globos, pinta-caritas, tatuajes, magia cómica, juegos y animación de la piñata). 💰 ¡Tenemos paquetes para CADA presupuesto! Reserva tu fecha con solo $75 — 📲 240-659-0154</li>
+          <li><span class="tit">Consultoría y Servicios Múltiples Omar Cruz</span> — Notaría en persona <strong>$8</strong> el sello (máximo legal de Maryland) y notaría remota (RON) $30; traducciones certificadas desde $30 la página; bookkeeping mensual para negocios hispanos desde $249/mes — 📲 240-659-0154</li>
+          <li><span class="tit">TuPáginaYa</span> — Página web profesional para tu negocio: plan Express <strong>$79</strong>. ¿Ya tienes tu página-demo lista? Actívala por $99 pago único o 3 pagos de $35 sin intereses. Trabajo remoto para todo EE.UU. y Puerto Rico — 📲 240-659-0154</li>
+        </ul>
+        <a class="btn-cat" href="https://wa.me/12406590154?text=Quiero%20publicar%20una%20OFERTA%20en%20El%20Bolet%C3%ADn%20DMV">📲 Publica tu oferta</a>
+      </article>
+
+      <article class="seccion" id="empleos">
+        <div class="sec-head">
+          <div class="kicker">Sección · Trabajo</div>
+          <h4>💼 Empleos</h4>
+        </div>
+        <ul class="notas">
+          <li><span class="tit">Conductor de entregas (delivery driver), tiempo completo</span> — Omnicare (CVS), Annapolis Junction, MD — <strong>$16.00 a $28.84 la hora</strong>, con vehículo de la compañía. Se aplica en línea en el portal de CVS Caremark (Workday). <em>(Vacante publicada en la edición original.)</em></li>
+        </ul>
+        <a class="btn-cat" href="https://wa.me/12406590154?text=Quiero%20publicar%20un%20EMPLEO%20en%20El%20Bolet%C3%ADn%20DMV">📲 Publica tu empleo</a>
+      </article>
+
+      <article class="seccion" id="eventos">
+        <div class="sec-head">
+          <div class="kicker">Sección · Comunidad</div>
+          <h4>🎉 Eventos</h4>
+        </div>
+        <figure>
+          <img src="foto-evento.jpg" alt="Festival latino al aire libre con música en vivo y familias de la comunidad celebrando">
+          <figcaption>Fiestas, conciertos y planes familiares del área, reunidos en un solo lugar. (Foto de ambiente)</figcaption>
+        </figure>
+        <ul class="notas">
+          <li><span class="tit">Be Like Blippi Tour</span> (show para niños) — viernes 27 de noviembre de 2026, funciones 2 PM y 6 PM — Tysons, VA — boletos desde ~$60</li>
+          <li><span class="tit">Omnium Circus</span> (circo familiar) — sábado 23 de enero de 2027, 2 PM — Warner Theatre, Washington DC — desde ~$53</li>
+          <li><span class="tit">Sesame Street Live: Elmo's Got the Moves</span> — domingo 24 de enero de 2027, 2 PM — The Lyric, Baltimore — desde ~$62</li>
+          <li><span class="tit">Disney On Ice: Magic in the Stars</span> — 11 al 15 de febrero de 2027 — CFG Bank Arena, Baltimore — listados desde ~$48</li>
+        </ul>
+        <a class="btn-cat" href="https://wa.me/12406590154?text=Quiero%20publicar%20un%20EVENTO%20en%20El%20Bolet%C3%ADn%20DMV">📲 Publica tu evento</a>
+      </article>
+
+      <article class="seccion" id="clasificados">
+        <div class="sec-head">
+          <div class="kicker">Sección · Vecinos</div>
+          <h4>📣 Clasificados</h4>
+        </div>
+        <ul class="notas">
+          <li><span class="tit">Nuevo grupo: «Boricuas en el DMV — Amigos y Actividades»</span> 🇵🇷 — comunidad de puertorriqueños en el DMV para amistad, fiestas y asados. Búscalo en Facebook y pide unirte: es gratis.</li>
+          <li><span class="tit">Muy pronto: Speed Dating Latino DMV</span> — el primer speed dating EN ESPAÑOL del área, en restaurantes locales. Fecha y sede se anuncian en este Boletín en cuanto estén oficiales.</li>
+          <li><span class="tit">Descansa en Su Palabra</span> 🌙 — canal de YouTube con oraciones de la noche y versículos para dormir en paz. Ya hay 10 videos publicados: <a href="https://youtube.com/@descansaensupalabra2026">youtube.com/@descansaensupalabra2026</a></li>
+        </ul>
+        <a class="btn-cat" href="https://wa.me/12406590154?text=Quiero%20publicar%20un%20CLASIFICADO%20en%20El%20Bolet%C3%ADn%20DMV">📲 Publica tu clasificado</a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== PARA NEGOCIOS ===== -->
+  <section class="wrap">
+    <div class="negocios">
+      <h3>Para negocios: llega a tu comunidad</h3>
+      <p class="sub">El Boletín DMV se distribuye en los grupos latinos más activos del área y crece edición tras edición. Estamos en fase de lanzamiento: los primeros anunciantes entran con <strong>precio fundador</strong>.</p>
+      <div class="precios">
+        <div class="precio destacado">
+          <div class="tag">⭐ El más visible</div>
+          <h4>Patrocinador de edición</h4>
+          <div class="monto">$150–$300 <small>/ edición</small></div>
+          <p>Tu logo y un bloque destacado con tu oferta al frente de la edición que patrocinas.</p>
+        </div>
+        <div class="precio">
+          <div class="tag">📌 Accesible</div>
+          <h4>Anuncio clasificado</h4>
+          <div class="monto">$15 <small>/ edición</small></div>
+          <p>Tu anuncio de texto en la sección de clasificados: vendes, rentas, buscas empleados o ofreces un servicio.</p>
+        </div>
+        <div class="precio">
+          <div class="tag">🏆 Todo el mes</div>
+          <h4>Negocio destacado del mes</h4>
+          <div class="monto">$99 <small>/ mes</small></div>
+          <p>Tu negocio presentado como el destacado en todas las ediciones del mes.</p>
+        </div>
+      </div>
+      <div style="text-align:center">
+        <a class="btn-neg" href="https://wa.me/12406590154?text=Quiero%20informaci%C3%B3n%20para%20anunciar%20mi%20negocio%20en%20El%20Bolet%C3%ADn%20DMV">Quiero anunciar mi negocio</a>
+      </div>
+      <p class="honesto">Sin contratos largos ni letra pequeña: pagas por edición o por mes, y renuevas solo si te funciona.</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="wrap">
+    <h3>Preguntas frecuentes</h3>
+    <div class="faq">
+      <details>
+        <summary>¿Cuánto cuesta recibir El Boletín DMV?</summary>
+        <p>Nada. Para los lectores es 100% gratis, siempre. Quienes pagan son los negocios que se anuncian.</p>
+      </details>
+      <details>
+        <summary>¿Cada cuánto sale?</summary>
+        <p>2 ediciones por semana. Es información local y útil, pensada para leerse en menos de 3 minutos.</p>
+      </details>
+      <details>
+        <summary>¿Cómo me suscribo?</summary>
+        <p>Toca el botón verde de arriba y envía el mensaje por WhatsApp. Quedas suscrito al instante, sin formularios ni contraseñas.</p>
+      </details>
+      <details>
+        <summary>¿Cómo me doy de baja?</summary>
+        <p>Con un solo mensaje por WhatsApp («baja») y no recibes más ediciones. Sin preguntas y sin complicaciones.</p>
+      </details>
+      <details>
+        <summary>¿De dónde sale la información?</summary>
+        <p>De negocios y vecinos de la comunidad latina del DMV (Maryland, DC y Virginia) que envían sus ofertas, empleos, eventos y clasificados. Estamos en lanzamiento y la audiencia crece con cada edición.</p>
+      </details>
+      <details>
+        <summary>Tengo un negocio, ¿cómo me anuncio?</summary>
+        <p>Escríbenos por WhatsApp con el botón «Quiero anunciar mi negocio». En lanzamiento aplicamos el precio fundador a los primeros patrocinadores y anunciantes.</p>
+      </details>
+    </div>
+  </section>
+
+</div><!-- /paper -->
 
 <footer>
   <div class="wrap">
     <p><strong>El Boletín DMV</strong> — Un proyecto de Omar Cruz Padilla para la comunidad latina de Maryland, DC y Virginia.</p>
-    <p>Suscripciones y anuncios por WhatsApp: 240-659-0154</p>
+    <p>Suscripciones y anuncios por WhatsApp: <a href="https://wa.me/12406590154?text=Quiero%20recibir%20El%20Bolet%C3%ADn%20DMV">240-659-0154</a></p>
+    <a class="subir" href="#portada">↑ Volver a la portada</a>
   </div>
 </footer>
+
+<script>
+// Solo adorno: pone la fecha de hoy en la barra superior del diario.
+// La página funciona completa sin JavaScript (enlaces, secciones y FAQ son nativos).
+(function(){
+  try{
+    var f = new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+    var el = document.getElementById('fecha');
+    if(el){ el.textContent = f; }
+  }catch(e){}
+})();
+</script>
 
 </body>
 </html>
